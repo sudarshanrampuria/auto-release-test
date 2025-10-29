@@ -26,7 +26,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          printenv
           PR_DATA=$(gh api \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -45,3 +44,18 @@ jobs:
           else
             echo "branches=[]" >> $GITHUB_OUTPUT
           fi
+  trigger-backport:
+    name: "Trigger Backport"
+    uses: ./.github/workflows/backport-executor.yml
+    needs: get-pr-info
+    if: ${{ needs.get-pr-info.outputs.branches != '[]' }}
+    strategy:
+      matrix:
+        branch: ${{ fromJSON(needs.get-pr-info.outputs.branches) }}
+      fail-fast: false
+    permissions:
+      contents: write
+      pull-requests: write
+    with:
+      target-branch: ${{ matrix.branch }}
+      commit-sha: ${{ needs.get-pr-info.outputs.commit-sha }}
