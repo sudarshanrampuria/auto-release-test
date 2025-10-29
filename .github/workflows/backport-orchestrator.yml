@@ -18,6 +18,10 @@ jobs:
       branches: ${{ steps.pr-info.outputs.branches }}
       commit-sha: ${{ steps.get-short-sha.outputs.short-sha }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Get commit SHA
         id: get-short-sha
         run: |
