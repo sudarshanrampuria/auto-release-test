@@ -1,3 +1,3 @@
 # auto-release-test
 
-test 0.2
+test v3
