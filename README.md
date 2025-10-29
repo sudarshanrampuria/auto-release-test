@@ -1,3 +1,3 @@
 # auto-release-test
 
-test 0.1
+test 0.2
