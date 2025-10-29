@@ -16,17 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       branches: ${{ steps.pr-info.outputs.branches }}
-      commit-sha: ${{ steps.get-short-sha.outputs.short-sha }}
+      commit-sha: ${{ github.sha }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Get commit SHA
-        id: get-short-sha
-        run: |
-          SHORT_SHA=$(git rev-parse --short=7 ${{ github.sha }})
-          echo "short-sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+        id: get-sha
+        run: echo "COMMIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Find PR information
         id: pr-info
         env:
