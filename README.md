@@ -1,3 +1,3 @@
 # auto-release-test
 
-test v4
+test v5
