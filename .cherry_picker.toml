@@ -1,0 +1,6 @@
+team = "astronomer"
+repo = "auto-release-test"
+"check_sha"= "68cda758a7cfb87eb0c307fed018bed7956d9568"
+fix_commit_msg = false
+default_branch = "main"
+require_version_in_branch_name=false
