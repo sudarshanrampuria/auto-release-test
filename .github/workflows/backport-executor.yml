@@ -36,7 +36,17 @@ jobs:
             persist-credentials: true
             fetch-depth: 0
         
-        - name: Install Python dependencies
+        - name: "Configure git"
+          run: |
+            git config --global user.email "bot@astronomer.io"
+            git config --global user.name "Your friendly bot"
+        
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.12'
+
+        - name: Install python dependencies
           run: |
             python -m pip install --upgrade pip
             python -m pip install cherry-picker==2.6.0 requests==2.32.5
@@ -48,18 +58,14 @@ jobs:
             TARGET_BRANCH: ${{ inputs.target-branch }}
             COMMIT_SHA: ${{ inputs.commit-sha }}
           run: |
-            git config --global user.email "bot@astronomer.io"
-            git config --global user.name "Your friendly bot"
-
             set +e
             {
             echo 'cherry_picker_output<<EOF'
             cherry_picker ${COMMIT_SHA} ${TARGET_BRANCH}
             echo EOF
             } >> "${GITHUB_OUTPUT}"
-
           continue-on-error: true
-        
+
         - name: Parse backport output
           id: parse-backport-output
           env:
@@ -79,3 +85,5 @@ jobs:
             fi
             echo "backport-url=$url" >> "${GITHUB_OUTPUT}"
           continue-on-error: true
+          
+          

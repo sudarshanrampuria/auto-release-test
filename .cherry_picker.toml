@@ -4,3 +4,4 @@ repo = "auto-release-test"
 fix_commit_msg = false
 default_branch = "main"
 require_version_in_branch_name=false
+draft_pr = false
