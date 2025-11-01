@@ -26,6 +26,6 @@ jobs:
           copy_assignees: true
           copy_milestone: true
           copy_requested_reviewers: true
-          branch_name: "backport-${pull_number}-to-${target_branch}"
+          branch_name: "backport-${pul\l_number}-to-${target_branch}"
           pull_title: "[Backport $to {target_branch}] ${pull_title}"
           auto_merge_enabled: true

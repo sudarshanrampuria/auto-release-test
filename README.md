@@ -1,3 +1,3 @@
 # auto-release-test
 
-test v8
+test v9
