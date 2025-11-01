@@ -29,3 +29,4 @@ jobs:
           branch_name: "backport-${pull_number}-to-${target_branch}"
           pull_title: "[Backport to ${target_branch}] ${pull_title}"
           auto_merge_enabled: true
+          experimental: '{"conflict_resolution": "draft_commit_conflicts"}'
