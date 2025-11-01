@@ -1,3 +1,3 @@
 # auto-release-test
 
-test v12
+test v13
