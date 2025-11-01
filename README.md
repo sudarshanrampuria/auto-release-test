@@ -1,3 +1,3 @@
 # auto-release-test
 
-test v10
+test v11

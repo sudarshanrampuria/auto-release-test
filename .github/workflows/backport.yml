@@ -27,5 +27,5 @@ jobs:
           copy_milestone: true
           copy_requested_reviewers: true
           branch_name: "backport-${pull_number}-to-${target_branch}"
-          pull_title: "[Backport $to {target_branch}] ${pull_title}"
+          pull_title: "[Backport to ${target_branch}] ${pull_title}"
           auto_merge_enabled: true
