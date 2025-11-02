@@ -1,3 +1,3 @@
 # auto-release-test
 
-test v15
+test v16
